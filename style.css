@@ -49,3 +49,60 @@ h1 {
     margin-top: 35% !important;
   }
 }
+#commits {
+    margin-top: 40px;
+  }
+  
+  #commits h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #commits .list-group {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #commits .list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  #commits .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  #commits .list-group-item p {
+    margin: 0;
+  }
+  
+  #commits .list-group-item .commit-date {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  #commits .list-group-item .commit-count {
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  /* Restyled commit counts */
+  #commits .list-group-item .commit-count {
+    color: #47A347; /* Default color for commit counts */
+    background-color: #DFF0D8; /* Default background color for commit counts */
+  }
+  
+  /* Darker green for high commit counts */
+  #commits .list-group-item .commit-count.high {
+    color: #155724;
+    background-color: #C3E6CB;
+  }
+  
+  /* Lighter green for less commit counts */
+  #commits .list-group-item .commit-count.less {
+    color: #228B22;
+    background-color: #E6F8E0;
+  }
+  
