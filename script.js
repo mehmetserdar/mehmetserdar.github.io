@@ -127,29 +127,33 @@ fetch(`https://api.github.com/users/${githubUsername}/repos`)
                    }
                });
    
-               // Dynamically create commit items
-               for (const date in commitsByDate) {
-                   const listItem = document.createElement("li");
-                   listItem.classList.add("list-group-item");
-   
-                   const commitInfo = document.createElement("p");
-                   commitInfo.classList.add("commit-date");
-                   commitInfo.innerText = date;
-   
-                   const commitCount = document.createElement("span");
-                   commitCount.classList.add("commit-count");
-   
-                   if (commitsByDate[date] > 5) {
-                       commitCount.classList.add("high");
-                   } else {
-                       commitCount.classList.add("less");
-                   }
-   
-                   commitCount.innerText = commitsByDate[date] + " commits";
-   
-                   listItem.appendChild(commitInfo);
-                   listItem.appendChild(commitCount);
-                   commitsContainer.appendChild(listItem);
-               }
-           })
-           .catch(error => console.error("Error fetching commits:", error));
+               // Get the latest three days with commits
+            const sortedDates = Object.keys(commitsByDate).sort((a, b) => new Date(b) - new Date(a));
+            const latestDates = sortedDates.slice(0, 5);
+
+            // Dynamically create commit items for the latest three days
+            latestDates.forEach(date => {
+                const listItem = document.createElement("li");
+                listItem.classList.add("list-group-item");
+
+                const commitInfo = document.createElement("p");
+                commitInfo.classList.add("commit-date");
+                commitInfo.innerText = date;
+
+                const commitCount = document.createElement("span");
+                commitCount.classList.add("commit-count");
+
+                if (commitsByDate[date] > 5) {
+                    commitCount.classList.add("high");
+                } else {
+                    commitCount.classList.add("less");
+                }
+
+                commitCount.innerText = commitsByDate[date] + " commits";
+
+                listItem.appendChild(commitInfo);
+                listItem.appendChild(commitCount);
+                commitsContainer.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error("Error fetching commits:", error));
