@@ -64,6 +64,11 @@ const netlifyLinks = [
     url: "https://spwd.netlify.app/",
     icon: "fas fa-lock",
   },
+  {
+    name: "PENTAHARF",
+    url: "https://pentaharf.netlify.app/",
+    icon: "fas fa-book",
+  }
 ];
 const netlifyContainer = document.getElementById("netlify");
 
